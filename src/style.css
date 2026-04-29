@@ -11,14 +11,26 @@
 
 /* Fallback for older browsers that don't support backdrop-filter */
 @supports not (backdrop-filter: blur(10px)) {
-  header, .glass-card, .nav-links, .dropdown-menu, .stat-card, footer {
+
+  header,
+  .glass-card,
+  .nav-links,
+  .dropdown-menu,
+  .stat-card,
+  footer {
     background: var(--glass-bg-fallback) !important;
   }
 }
 
 /* Webkit fallback for older Android/Safari */
 @supports not (-webkit-backdrop-filter: blur(10px)) {
-  header, .glass-card, .nav-links, .dropdown-menu, .stat-card, footer {
+
+  header,
+  .glass-card,
+  .nav-links,
+  .dropdown-menu,
+  .stat-card,
+  footer {
     background: var(--glass-bg-fallback) !important;
   }
 }
@@ -562,6 +574,7 @@ footer {
   gap: 3rem;
   margin-top: 2rem;
 }
+
 .contact-info-card {
   display: flex;
   align-items: center;
@@ -573,10 +586,12 @@ footer {
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
+
 .contact-info-card:hover {
   transform: translateX(10px);
   border-color: var(--primary-color);
 }
+
 .contact-icon {
   width: 50px;
   height: 50px;
@@ -588,10 +603,12 @@ footer {
   font-size: 1.5rem;
   color: var(--primary-color);
 }
+
 .contact-details h3 {
   font-size: 1.1rem;
   margin-bottom: 0.2rem;
 }
+
 .contact-details p {
   color: #94a3b8;
   font-size: 0.9rem;
@@ -611,17 +628,20 @@ footer {
   align-items: center;
   margin: 4rem 0;
 }
+
 .about-img {
   width: 100%;
   border-radius: 20px;
   border: 2px solid var(--glass-border);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
 }
+
 .about-img:hover {
   transform: scale(1.02);
   border-color: var(--primary-color);
 }
+
 .about-text h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -630,12 +650,14 @@ footer {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .about-text p {
   color: #94a3b8;
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
+
 @media (max-width: 768px) {
   .about-top {
     grid-template-columns: 1fr;
@@ -648,6 +670,7 @@ footer {
   display: flex;
   flex-direction: column;
 }
+
 .project-img {
   width: 100%;
   height: 200px;
@@ -655,12 +678,14 @@ footer {
   border-radius: 12px;
   margin-bottom: 1rem;
 }
+
 .badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
+
 .badge {
   background: rgba(59, 130, 246, 0.2);
   color: #60a5fa;
@@ -669,11 +694,13 @@ footer {
   font-size: 0.8rem;
   font-weight: 600;
 }
+
 .card-actions {
   display: flex;
   gap: 1rem;
   margin-top: auto;
 }
+
 .card-actions .btn {
   flex: 1;
   text-align: center;
@@ -681,16 +708,19 @@ footer {
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
+
 .btn-outline {
   background: transparent;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
 }
+
 .btn-outline:hover {
   background: rgba(59, 130, 246, 0.1);
   color: var(--primary-color);
   opacity: 1;
 }
+
 .blog-meta {
   display: flex;
   justify-content: space-between;
