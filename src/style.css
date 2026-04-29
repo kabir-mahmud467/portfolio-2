@@ -631,15 +631,20 @@ footer {
 
 .about-img {
   width: 100%;
-  border-radius: 20px;
-  border: 2px solid var(--glass-border);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  display: block;
 }
 
 .about-img:hover {
-  transform: scale(1.02);
-  border-color: var(--primary-color);
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 0 50px rgba(59, 130, 246, 0.5);
 }
 
 .about-text h2 {
