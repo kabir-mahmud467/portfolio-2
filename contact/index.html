@@ -88,7 +88,7 @@
       <!-- Form -->
       <div class="glass-card" style="margin-bottom: 0;">
         <h2 style="margin-bottom: 2rem; font-size: 2rem;">Send a Message</h2>
-        <form action="mailto:mail@kabirmahmud.xyz" method="POST" enctype="text/plain">
+        <form onsubmit="event.preventDefault(); alert('Thank you for your message! I will get back to you soon.');">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
             <div class="form-group">
               <label for="name">Your Name</label>
@@ -111,9 +111,54 @@
         </form>
       </div>
     </div>
+
+    <!-- Extra Section: Global Footprint -->
+    <h2 class="section-title">Global Footprint</h2>
+    <div class="features-grid" style="text-align: center;">
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Remote First</h3>
+        <p>I have successfully collaborated with teams from New York, London, Berlin, and Singapore without missing a beat.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Communication</h3>
+        <p>Fluent in English and Bengali. I prioritize clear, asynchronous communication using Slack, Jira, and GitHub.</p>
+      </div>
+    </div>
+
   </main>
-  <footer>
-    <p>&copy; 2026 Kabir Mahmud. All rights reserved.</p>
+  <footer style="background: rgba(15, 23, 42, 0.9); border-top: 1px solid var(--glass-border); padding: 4rem 5% 2rem; margin-top: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+      <div>
+        <a href="/home/" class="logo-container" style="margin-bottom: 1rem; display: inline-flex;">
+          <img src="/profile.jpg" alt="Kabir Mahmud Logo" class="logo-img">
+          <span style="font-size: 1.5rem;">Kabir Mahmud</span>
+        </a>
+        <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem;">Building digital experiences that combine stunning design with bleeding-edge performance.</p>
+      </div>
+      <div>
+        <h3 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem;">
+          <li><a href="/home/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Home</a></li>
+          <li><a href="/about/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">About</a></li>
+          <li><a href="/projects/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Projects</a></li>
+          <li><a href="/blog/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.2rem;">Connect</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem;">
+          <li><a href="https://github.com/kabirmahmud467" target="_blank" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/kabirmahmud467" target="_blank" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">LinkedIn</a></li>
+          <li><a href="https://twitter.com/kabirmahmud467" target="_blank" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Twitter</a></li>
+          <li><a href="/contact/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #64748b;">
+      <p>&copy; 2026 Kabir Mahmud. All rights reserved. Designed with ❤️ in Bangladesh.</p>
+    </div>
   </footer>
   <script type="module" src="/src/main.js"></script>
 </body>

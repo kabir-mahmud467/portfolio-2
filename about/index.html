@@ -92,9 +92,119 @@
         </div>
       </div>
     </div>
+
+    <!-- Skills Section -->
+    <h2 class="section-title">Core Competencies</h2>
+    <div class="skills-container">
+      <div class="skill-box">
+        <div class="skill-info">
+          <span>Frontend Architecture (React/Next.js)</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="95%"></div>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="skill-info">
+          <span>Backend Systems (Node/Python)</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="90%"></div>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="skill-info">
+          <span>Database Design (SQL/NoSQL)</span>
+          <span>85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="85%"></div>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="skill-info">
+          <span>UI/UX & Web Animations (GSAP/Three.js)</span>
+          <span>88%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="88%"></div>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="skill-info">
+          <span>DevOps & Cloud (AWS/Docker)</span>
+          <span>80%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="80%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values Section -->
+    <h2 class="section-title">My Philosophy</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3>Continuous Learning</h3>
+        <p>In the rapidly evolving world of tech, standing still means falling behind. I dedicate time weekly to mastering new tools and paradigms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>User-Centric Design</h3>
+        <p>Code is just a tool. The ultimate goal is to create products that solve real problems and provide joy to the end user.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>Open Source</h3>
+        <p>I believe in giving back to the community that taught me. I actively contribute to open source and mentor aspiring developers.</p>
+      </div>
+    </div>
+
+    <!-- Extra Section: Newsletter -->
+    <section class="newsletter">
+      <h2>Let's Connect</h2>
+      <p>Drop your email below and let's keep in touch. No spam, just pure tech goodness.</p>
+      <form onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn" style="margin-top: 0;">Join Now</button>
+      </form>
+    </section>
+
   </main>
-  <footer>
-    <p>&copy; 2026 Kabir Mahmud. All rights reserved.</p>
+  <footer style="background: rgba(15, 23, 42, 0.9); border-top: 1px solid var(--glass-border); padding: 4rem 5% 2rem; margin-top: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+      <div>
+        <a href="/home/" class="logo-container" style="margin-bottom: 1rem; display: inline-flex;">
+          <img src="/profile.jpg" alt="Kabir Mahmud Logo" class="logo-img">
+          <span style="font-size: 1.5rem;">Kabir Mahmud</span>
+        </a>
+        <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem;">Building digital experiences that combine stunning design with bleeding-edge performance.</p>
+      </div>
+      <div>
+        <h3 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem;">
+          <li><a href="/home/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Home</a></li>
+          <li><a href="/about/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">About</a></li>
+          <li><a href="/projects/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Projects</a></li>
+          <li><a href="/blog/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.2rem;">Connect</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem;">
+          <li><a href="https://github.com/kabirmahmud467" target="_blank" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/kabirmahmud467" target="_blank" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">LinkedIn</a></li>
+          <li><a href="https://twitter.com/kabirmahmud467" target="_blank" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Twitter</a></li>
+          <li><a href="/contact/" style="color: #94a3b8; text-decoration: none; transition: color 0.3s ease;">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #64748b;">
+      <p>&copy; 2026 Kabir Mahmud. All rights reserved. Designed with ❤️ in Bangladesh.</p>
+    </div>
   </footer>
   <script type="module" src="/src/main.js"></script>
 </body>
