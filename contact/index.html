@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Kabir Mahmud</title>
+  <meta name="description" content="Contact Kabir Mahmud at mail@kabirmahmud.xyz">
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <header>
+    <nav>
+      <a href="/home/" class="logo-container">
+        <img src="https://ui-avatars.com/api/?name=Kabir+Mahmud&background=3b82f6&color=fff&rounded=true" alt="Kabir Mahmud Logo" class="logo-img">
+        <span>Kabir Mahmud</span>
+      </a>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/home/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li class="dropdown">
+          <a href="#">Others ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="/social/">Social</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://shop.kabirmahmud.xyz" target="_blank">Shop</a></li>
+            <li><a href="https://books.kabirmahmud.xyz" target="_blank">Books</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" style="min-height: auto; padding-top: 4rem;">
+      <h1>Contact Me</h1>
+      <p>Let's build something amazing together.</p>
+    </section>
+    
+    <div class="glass-card" style="max-width: 600px; margin: 0 auto;">
+      <form action="mailto:mail@kabirmahmud.xyz" method="POST" enctype="text/plain">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" class="form-control" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" class="form-control" required placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" class="form-control" rows="5" required placeholder="Hello Kabir..."></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2026 Kabir Mahmud. All rights reserved.</p>
+  </footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
