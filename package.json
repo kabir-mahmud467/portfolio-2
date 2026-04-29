@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@vitejs/plugin-legacy": "^8.0.1",
+    "terser": "^5.46.2",
     "vite": "^8.0.10"
   },
   "dependencies": {

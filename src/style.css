@@ -6,6 +6,21 @@
   --primary-color: #3b82f6;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg-fallback: rgba(15, 23, 42, 0.95);
+}
+
+/* Fallback for older browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  header, .glass-card, .nav-links, .dropdown-menu, .stat-card, footer {
+    background: var(--glass-bg-fallback) !important;
+  }
+}
+
+/* Webkit fallback for older Android/Safari */
+@supports not (-webkit-backdrop-filter: blur(10px)) {
+  header, .glass-card, .nav-links, .dropdown-menu, .stat-card, footer {
+    background: var(--glass-bg-fallback) !important;
+  }
 }
 
 * {
@@ -241,6 +256,7 @@ main {
   font-size: 4rem;
   background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
 }
@@ -517,6 +533,7 @@ footer {
   font-size: 3rem;
   background: linear-gradient(90deg, #3b82f6, #ec4899);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
 }
@@ -534,6 +551,7 @@ footer {
   margin-top: 4rem;
   background: linear-gradient(90deg, #f8fafc, #94a3b8);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -609,6 +627,7 @@ footer {
   margin-bottom: 1rem;
   background: linear-gradient(90deg, #f8fafc, #94a3b8);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .about-text p {
