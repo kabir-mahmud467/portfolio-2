@@ -9,6 +9,9 @@ export default defineConfig({
     }),
   ],
   build: {
+    minify: 'terser',
+    assetsInlineLimit: 4096, // Inline assets < 4KB
+    cssCodeSplit: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
