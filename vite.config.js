@@ -10,6 +10,7 @@ export default defineConfig({
   ],
   build: {
     minify: 'terser',
+    chunkSizeWarningLimit: 1000,
     assetsInlineLimit: 4096, // Inline assets < 4KB
     cssCodeSplit: true,
     rollupOptions: {
