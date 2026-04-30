@@ -58,11 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
   const links = document.querySelectorAll('.nav-links > li > a');
   links.forEach(link => {
-    if (path.includes(link.getAttribute('href')) && link.getAttribute('href') !== '/home/') {
+    const href = link.getAttribute('href');
+    if (path === href || (path === '/' && href === '/')) {
       link.classList.add('active');
-    } else if (path === '/' && link.getAttribute('href') === '/home/') {
-      link.classList.add('active');
-    } else if (path === '/home/' && link.getAttribute('href') === '/home/') {
+    } else if (href !== '/' && path.startsWith(href)) {
       link.classList.add('active');
     }
   });
