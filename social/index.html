@@ -2,19 +2,11 @@
 <html lang="en">
 <head>
 
+  <link rel="canonical" href="https://kabirmahmud.xyz/social/" />
   <!-- Preconnect to Font Servers -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM45MNJZB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-LNM45MNJZB');
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social - Kabir Mahmud</title>
@@ -181,8 +173,8 @@
   <footer style="background: rgba(15, 23, 42, 0.9); border-top: 1px solid var(--glass-border); padding: 4rem 5% 2rem; margin-top: 4rem;">
     <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
       <div>
-        <a href="/home/" class="logo-container" style="margin-bottom: 1rem; display: inline-flex;">
-          <img src="/profile.jpg" alt="Kabir Mahmud Logo" class="logo-img">
+        <a href="/" class="logo-container" style="margin-bottom: 1rem; display: inline-flex;">
+          <img src="/profile.jpg" alt="Kabir Mahmud Logo" class="logo-img" width="36" height="36" loading="lazy" decoding="async">
           <span style="font-size: 1.5rem;">Kabir Mahmud</span>
         </a>
         <p style="color: #cbd5e1; line-height: 1.6; margin-bottom: 1.5rem;">Building digital experiences that combine stunning design with bleeding-edge performance.</p>
@@ -211,5 +203,22 @@
     </div>
   </footer>
   <script type="module" src="/src/main.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-LNM45MNJZB";
+        document.body.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-LNM45MNJZB');
+      }, 2000);
+    });
+  </script>
 </body>
 </html>

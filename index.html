@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+  <link rel="canonical" href="https://kabirmahmud.xyz/" />
   <!-- Preconnect to Font Servers -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM45MNJZB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-LNM45MNJZB');
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kabir Mahmud - Portfolio</title>
@@ -77,7 +68,7 @@
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" alt="Nuxt.js" width="40" height="40" loading="lazy" decoding="async"><span>Nuxt.js</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="40" height="40" loading="lazy" decoding="async"><span>Node.js</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" style="filter: invert(1)" alt="Express" width="40" height="40" loading="lazy" decoding="async"><span>Express</span></div>
-        <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" alt="NestJS" width="40" height="40" loading="lazy" decoding="async"><span>NestJS</span></div>
+        <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" alt="NestJS" width="40" height="40" loading="lazy" decoding="async"><span>NestJS</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="40" height="40" loading="lazy" decoding="async"><span>Python</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" width="40" height="40" loading="lazy" decoding="async"><span>Django</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" width="40" height="40" loading="lazy" decoding="async"><span>Java</span></div>
@@ -124,7 +115,7 @@
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" alt="Nuxt.js" width="40" height="40" loading="lazy" decoding="async"><span>Nuxt.js</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="40" height="40" loading="lazy" decoding="async"><span>Node.js</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" style="filter: invert(1)" alt="Express" width="40" height="40" loading="lazy" decoding="async"><span>Express</span></div>
-        <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" alt="NestJS" width="40" height="40" loading="lazy" decoding="async"><span>NestJS</span></div>
+        <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" alt="NestJS" width="40" height="40" loading="lazy" decoding="async"><span>NestJS</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="40" height="40" loading="lazy" decoding="async"><span>Python</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" width="40" height="40" loading="lazy" decoding="async"><span>Django</span></div>
         <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" width="40" height="40" loading="lazy" decoding="async"><span>Java</span></div>
@@ -315,6 +306,24 @@
       <p>&copy; 2026 Kabir Mahmud. All rights reserved. Designed with ❤️ in Bangladesh.</p>
     </div>
   </footer>
+  
   <script type="module" src="/src/main.js"></script>
+
+  <!-- Google tag (gtag.js) - Moved to bottom and wrapped in a delay to prevent forced reflows during load -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-LNM45MNJZB";
+        document.body.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-LNM45MNJZB');
+      }, 2000); // 2 second delay
+    });
+  </script>
 </body>
 </html>
