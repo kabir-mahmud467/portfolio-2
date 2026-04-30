@@ -56,6 +56,9 @@ const loadEnhancements = () => {
     const isOldAndroid    = /Android [1-7]/.test(navigator.userAgent);
 
     if (!isReducedMotion && !isOldAndroid) {
+      // Wrap all ScrollTrigger setup in rAF so layout reads happen in a single
+      // clean frame — this eliminates the forced synchronous reflow warning.
+      requestAnimationFrame(() => {
       // Skills progress bars
       document.querySelectorAll('.skill-progress').forEach(bar => {
         const targetWidth = bar.getAttribute('data-width');
@@ -110,8 +113,9 @@ const loadEnhancements = () => {
           opacity: 0, y: 40, duration: 0.8
         });
       });
-    }
-  });
+    });
+  }
+});
 
   // ── Three.js 3D Background ───────────────────────────────────────────────
   const canvas = document.querySelector('#bg');
