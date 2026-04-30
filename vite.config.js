@@ -23,9 +23,12 @@ export default defineConfig({
         blog: resolve(__dirname, 'blog/index.html'),
       },
       output: {
-        manualChunks: {
-          'vendor-three': ['three'],
-          'vendor-gsap': ['gsap'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('three')) return 'vendor-three';
+            if (id.includes('gsap')) return 'vendor-gsap';
+            return 'vendor'; // all other dependencies
+          }
         }
       }
     }
