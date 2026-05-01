@@ -22,6 +22,7 @@ export default defineConfig({
         projects: resolve(__dirname, 'projects/index.html'),
         social: resolve(__dirname, 'social/index.html'),
         blog: resolve(__dirname, 'blog/index.html'),
+        resources: resolve(__dirname, 'resources/index.html'),
       },
       output: {
         manualChunks(id) {
