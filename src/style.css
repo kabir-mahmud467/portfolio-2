@@ -176,6 +176,9 @@ nav {
 }
 
 .buy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.9rem 1.25rem;
   border-radius: 999px;
   border: 1px solid rgba(59, 130, 246, 0.35);
@@ -220,6 +223,11 @@ nav {
   background: rgba(148, 163, 184, 0.12);
   border-color: rgba(148, 163, 184, 0.34);
   outline: none;
+}
+
+.secondary-button.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* Hamburger */

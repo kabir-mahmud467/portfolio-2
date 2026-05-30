@@ -4,17 +4,22 @@
   <h2>Resources</h2>
   <div class="projects-grid">
     <% items.forEach(r => { %>
+      <% const purchased = Array.isArray(purchasedResources) && purchasedResources.includes(String(r._id)) %>
       <article class="glass-card">
         <% if (r.image) { %>
           <img src="<%= r.image %>" alt="<%= r.title %>" style="max-width:100%; border-radius: 14px; margin-bottom: 1rem;">
         <% } %>
-        <a href="<%= r.link %>"><%= r.title %></a>
+        <a href="/resources/<%= r.slug %>/"><%= r.title %></a>
         <p><%= r.description %></p>
         <p style="margin-top: 1rem; color: #cbd5e1;"><strong><%= formatDollar(r.price) %></strong></p>
         <div class="content-actions">
-          <a href="<%= buyUrl %>" class="buy-button">Buy</a>
-          <% if (r.pdf) { %>
-            <a href="<%= r.pdf %>" class="secondary-button" target="_blank" rel="noreferrer">Open PDF</a>
+          <form method="post" action="/resources/<%= r.slug %>/buy" style="display:inline;">
+            <button type="submit" class="buy-button">Buy</button>
+          </form>
+          <% if (purchased) { %>
+            <a href="/resources/<%= r.slug %>/" class="secondary-button">View</a>
+          <% } else { %>
+            <a href="#" class="secondary-button is-disabled" aria-disabled="true" tabindex="-1">View</a>
           <% } %>
         </div>
       </article>

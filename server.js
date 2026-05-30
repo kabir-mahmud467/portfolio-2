@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
+import session from 'express-session'
 import authRoutes from './routes/auth.js'
 import adminRoutes from './routes/admin.js'
 import publicRoutes from './routes/public.js'
@@ -15,6 +16,11 @@ const __dirname = path.resolve()
 const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'portfolio-session-secret',
+  resave: false,
+  saveUninitialized: false,
+}))
 
 app.use((req, res, next) => {
   req.currentUser = getAuthUser(req)

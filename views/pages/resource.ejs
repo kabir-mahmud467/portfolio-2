@@ -1,0 +1,36 @@
+<%- include('../partials/header', {
+  user: user,
+  title: title,
+  description: description,
+  ogTitle: ogTitle,
+  ogDescription: ogDescription,
+  ogImage: ogImage,
+  ogType: ogType,
+}) %>
+
+<article class="glass-card blog-post">
+  <% if (item.image) { %>
+    <img class="blog-post-image" src="<%= item.image %>" alt="<%= item.title %>">
+  <% } %>
+  <p class="blog-post-meta"><%= purchased ? 'Purchased resource' : 'Locked resource' %></p>
+  <h1 class="blog-post-title"><%= item.title %></h1>
+  <p><%= item.description %></p>
+  <% if (item.link) { %>
+    <% if (purchased) { %>
+      <p style="color: #94a3b8;"><a href="<%= item.link %>" target="_blank" rel="noreferrer">Open resource link</a></p>
+    <% } %>
+  <% } %>
+  <p style="color: #cbd5e1;"><strong><%= formatDollar(item.price) %></strong></p>
+  <div class="content-actions">
+    <a class="secondary-button" href="/resources/">Back to resources</a>
+    <% if (purchased && item.pdf) { %>
+      <a class="buy-button" href="<%= item.pdf %>" target="_blank" rel="noreferrer">Open PDF</a>
+    <% } else if (!purchased) { %>
+      <form method="post" action="/resources/<%= item.slug %>/buy" style="display:inline;">
+        <button type="submit" class="buy-button">Buy to unlock</button>
+      </form>
+    <% } %>
+  </div>
+</article>
+
+<%- include('../partials/footer') %>

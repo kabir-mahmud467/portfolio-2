@@ -1,0 +1,31 @@
+<%- include('../partials/header', {
+  user: user,
+  title: title,
+  description: description,
+  ogTitle: ogTitle,
+  ogDescription: ogDescription,
+  ogImage: ogImage,
+  ogType: ogType,
+}) %>
+
+<article class="glass-card blog-post">
+  <% if (item.image) { %>
+    <img class="blog-post-image" src="<%= item.image %>" alt="<%= item.title %>">
+  <% } %>
+  <p class="blog-post-meta"><%= purchased ? 'Purchased item' : 'Locked item' %></p>
+  <h1 class="blog-post-title"><%= item.title %></h1>
+  <p><%= item.description %></p>
+  <p style="color: #cbd5e1;"><strong><%= formatDollar(item.price) %></strong><% if (item.category) { %> · <%= item.category %><% } %></p>
+  <div class="content-actions">
+    <a class="secondary-button" href="/shop/">Back to shop</a>
+    <% if (purchased) { %>
+      <span class="buy-button" aria-disabled="true">View unlocked</span>
+    <% } else { %>
+      <form method="post" action="/shop/<%= item.slug %>/buy" style="display:inline;">
+        <button type="submit" class="buy-button">Buy to unlock view</button>
+      </form>
+    <% } %>
+  </div>
+</article>
+
+<%- include('../partials/footer') %>

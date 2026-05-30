@@ -4,6 +4,7 @@
   <h2>Shop</h2>
   <div class="projects-grid">
     <% items.forEach(item => { %>
+      <% const purchased = Array.isArray(purchasedProducts) && purchasedProducts.includes(String(item._id)) %>
       <article class="glass-card">
         <% if (item.image) { %>
           <img src="<%= item.image %>" alt="<%= item.title %>" style="max-width:100%; border-radius: 14px; margin-bottom: 1rem;">
@@ -11,7 +12,16 @@
         <h3><%= item.title %></h3>
         <p><%= item.description %></p>
         <p style="margin-top: 1rem; color: #cbd5e1;"><strong><%= formatDollar(item.price) %></strong><% if (item.category) { %> · <%= item.category %><% } %></p>
-        <a href="<%= buyUrl %>" class="buy-button" style="margin-top: 1rem; display: inline-flex; align-items: center; justify-content: center;">Buy</a>
+        <div class="content-actions">
+          <form method="post" action="/shop/<%= item.slug %>/buy" style="display:inline;">
+            <button type="submit" class="buy-button">Buy</button>
+          </form>
+          <% if (purchased) { %>
+            <a href="/shop/<%= item.slug %>/" class="secondary-button">View</a>
+          <% } else { %>
+            <a href="#" class="secondary-button is-disabled" aria-disabled="true" tabindex="-1">View</a>
+          <% } %>
+        </div>
       </article>
     <% }) %>
   </div>
