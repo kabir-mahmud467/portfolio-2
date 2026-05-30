@@ -7,6 +7,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "seed": "node seedAdmin.js",
+    "backfill:slugs": "node scripts/backfillSlugs.js",
     "vite:dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

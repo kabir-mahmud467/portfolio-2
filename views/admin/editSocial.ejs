@@ -1,10 +1,25 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>Edit Social Link</h2>
-  <form method="post" action="/admin/socials/<%= item._id %>">
-    <div><label>Platform<input name="platform" value="<%= item.platform %>" required /></label></div>
-    <div><label>URL<input name="url" value="<%= item.url %>" required /></label></div>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Social Links</p>
+      <h2>Edit Social Link</h2>
+    </div>
+    <a class="admin-secondary" href="/admin/socials">Back to list</a>
+  </div>
+  <form class="admin-form-grid" method="post" action="/admin/socials/<%= item._id %>" enctype="multipart/form-data">
+    <div class="admin-field"><label>Platform<input name="platform" value="<%= item.platform %>" required /></label></div>
+    <div class="admin-field"><label>URL<input name="url" type="url" value="<%= item.url %>" required /></label></div>
+    <div class="admin-field"><label>Icon<input name="icon" value="<%= item.icon || '' %>" placeholder="fa-brands fa-github" /></label></div>
+    <% if (item.image) { %>
+      <div class="admin-upload-preview">
+        <p class="admin-field-hint">Current image</p>
+        <img src="<%= item.image %>" alt="<%= item.platform %>" style="max-width: 260px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12);">
+      </div>
+    <% } %>
+    <div class="admin-field"><label>Image File<input type="file" name="image" accept="image/*" /></label></div>
+    <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" value="<%= item.image || '' %>" placeholder="https://example.com/image.jpg" /></label></div>
     <button type="submit">Save</button>
   </form>
 </section>

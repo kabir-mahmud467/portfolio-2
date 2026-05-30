@@ -1,12 +1,23 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>Contacts</h2>
-  <ul>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Contacts</p>
+      <h2>Incoming messages</h2>
+    </div>
+  </div>
+  <div class="admin-card-grid">
     <% items.forEach(item => { %>
-      <li><strong><%= item.name %></strong> - <%= item.email %><p><%= item.message %></p></li>
+      <article class="admin-card">
+        <div class="admin-card-body">
+          <h3><%= item.name %></h3>
+          <p><%= item.email %></p>
+          <p><%= item.message %></p>
+        </div>
+      </article>
     <% }) %>
-  </ul>
+  </div>
 </section>
 
 <%- include('../partials/adminFooter') %>

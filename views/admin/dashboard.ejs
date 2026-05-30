@@ -1,7 +1,36 @@
 <%- include('../partials/adminHeader', { user: user }) %>
 
+<section class="admin-hero">
+  <div class="admin-hero-grid">
+    <div class="admin-hero-copy">
+      <p class="admin-kicker">Overview</p>
+      <h2>Build, publish, and polish every portfolio asset from one place.</h2>
+      <p class="admin-note">Upload images, paste URLs, and keep your content collections in sync without leaving the dashboard.</p>
+      <div class="admin-hero-actions">
+        <a class="admin-action" href="/admin/projects/new">Create project</a>
+        <a class="admin-secondary" href="/admin/blogs/new">Write blog</a>
+      </div>
+    </div>
+    <div class="admin-hero-panel">
+      <div class="admin-hero-panel-row">
+        <span>Live sections</span>
+        <strong>7</strong>
+      </div>
+      <div class="admin-hero-panel-row">
+        <span>Latest admin</span>
+        <strong><%= (typeof user !== 'undefined' && user && user.username) ? user.username : 'Admin' %></strong>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
-  <h2>Overview</h2>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Stats</p>
+      <h2>Content overview</h2>
+    </div>
+  </div>
   <div class="admin-stats">
     <div class="admin-stat"><span>Projects</span><strong><%= counts.projects %></strong></div>
     <div class="admin-stat"><span>Blogs</span><strong><%= counts.blogs %></strong></div>
@@ -14,8 +43,13 @@
 </section>
 
 <section>
-  <h2>Quick Actions</h2>
-  <nav>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Quick Actions</p>
+      <h2>Jump into a collection</h2>
+    </div>
+  </div>
+  <nav class="admin-action-grid">
     <a href="/admin/projects">Manage Projects</a>
     <a href="/admin/blogs">Manage Blogs</a>
     <a href="/admin/products">Manage Shop</a>

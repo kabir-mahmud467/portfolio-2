@@ -13,7 +13,8 @@
           <p style="color: #94a3b8; margin-bottom: 0.75rem;"><%= item.author %></p>
         <% } %>
         <p><%= item.description %></p>
-        <p style="margin-top: 1rem; color: #cbd5e1;"><strong>$<%= item.price || 0 %></strong></p>
+        <p style="margin-top: 1rem; color: #cbd5e1;"><strong><%= formatDollar(item.price) %></strong></p>
+        <a href="<%= buyUrl %>" class="buy-button" style="margin-top: 1rem; display: inline-flex; align-items: center; justify-content: center;">Buy</a>
       </article>
     <% }) %>
   </div>

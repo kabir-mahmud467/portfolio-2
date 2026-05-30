@@ -1,13 +1,25 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>New Project</h2>
-  <form method="post" action="/admin/projects" enctype="multipart/form-data">
-    <div><label>Title<input name="title" required /></label></div>
-    <div><label>Description<textarea name="description"></textarea></label></div>
-    <div><label>Link<input name="link" /></label></div>
-    <div><label>Image File<input type="file" name="image" accept="image/*" /></label></div>
-    <div><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Projects</p>
+      <h2>New Project</h2>
+    </div>
+    <a class="admin-secondary" href="/admin/projects">Back to list</a>
+  </div>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="admin-error"><%= error %></div>
+  <% } %>
+  <form class="admin-form-grid" method="post" action="/admin/projects" enctype="multipart/form-data">
+    <div class="admin-field"><label>Title<input name="title" required placeholder="Project title" /></label></div>
+    <div class="admin-field"><label>Description<textarea name="description" placeholder="Short project summary"></textarea></label></div>
+    <div class="admin-field"><label>Link<input name="link" type="url" placeholder="https://example.com" /></label></div>
+    <div class="admin-field">
+      <label>Image File<input type="file" name="image" accept="image/*" /></label>
+      <p class="admin-field-hint">Upload an image or paste a URL below.</p>
+    </div>
+    <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
     <button type="submit">Create</button>
   </form>
 </section>

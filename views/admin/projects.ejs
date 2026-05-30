@@ -1,23 +1,37 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>Projects</h2>
-  <a href="/admin/projects/new">New Project</a>
-  <ul>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Projects</p>
+      <h2>Portfolio builds</h2>
+    </div>
+    <a class="admin-action" href="/admin/projects/new">New Project</a>
+  </div>
+  <div class="admin-card-grid">
     <% items.forEach(item => { %>
-      <li>
-        <strong><%= item.title %></strong> - <%= item.description %>
-        <div>
+      <article class="admin-card">
+        <% if (item.image) { %>
+          <img class="admin-card-media" src="<%= item.image %>" alt="<%= item.title %>">
+        <% } %>
+        <div class="admin-card-body">
+          <h3><%= item.title %></h3>
+          <p><%= item.description || 'No description provided.' %></p>
+          <% if (item.link) { %>
+            <a class="admin-link" href="<%= item.link %>" target="_blank" rel="noreferrer">Open link</a>
+          <% } %>
+        </div>
+        <div class="admin-card-actions">
           <a href="/admin/projects/<%= item._id %>/edit">Edit</a>
           <form method="post" action="/admin/projects/<%= item._id %>/delete" style="display:inline" onsubmit="return confirm('Delete this project?')">
             <button type="submit">Delete</button>
           </form>
         </div>
-      </li>
+      </article>
     <% }) %>
-  </ul>
+  </div>
   <% if (total && limit) { %>
-    <div>Page <%= page %> of <%= Math.ceil(total/limit) %></div>
+    <div class="admin-pagination">Page <%= page %> of <%= Math.ceil(total/limit) %></div>
   <% } %>
 </section>
 

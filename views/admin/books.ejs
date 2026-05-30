@@ -1,23 +1,35 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>Books</h2>
-  <a href="/admin/books/new">New Book</a>
-  <ul>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Books</p>
+      <h2>Reading shelf</h2>
+    </div>
+    <a class="admin-action" href="/admin/books/new">New Book</a>
+  </div>
+  <div class="admin-card-grid">
     <% items.forEach(item => { %>
-      <li>
-        <strong><%= item.title %></strong> - $<%= item.price %>
-        <div>
+      <article class="admin-card">
+        <% if (item.image) { %>
+          <img class="admin-card-media" src="<%= item.image %>" alt="<%= item.title %>">
+        <% } %>
+        <div class="admin-card-body">
+          <h3><%= item.title %></h3>
+          <p><%= item.author || 'Unknown author' %></p>
+          <p class="admin-price"><%= formatDollar(item.price) %></p>
+        </div>
+        <div class="admin-card-actions">
           <a href="/admin/books/<%= item._id %>/edit">Edit</a>
           <form method="post" action="/admin/books/<%= item._id %>/delete" style="display:inline" onsubmit="return confirm('Delete this book?')">
             <button type="submit">Delete</button>
           </form>
         </div>
-      </li>
+      </article>
     <% }) %>
-  </ul>
+  </div>
   <% if (total && limit) { %>
-    <div>Page <%= page %> of <%= Math.ceil(total/limit) %></div>
+    <div class="admin-pagination">Page <%= page %> of <%= Math.ceil(total/limit) %></div>
   <% } %>
 </section>
 

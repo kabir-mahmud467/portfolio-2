@@ -1,11 +1,23 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>New Resource</h2>
-  <form method="post" action="/admin/resources">
-    <div><label>Title<input name="title" required /></label></div>
-    <div><label>Description<textarea name="description"></textarea></label></div>
-    <div><label>Link<input name="link" /></label></div>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Resources</p>
+      <h2>New Resource</h2>
+    </div>
+    <a class="admin-secondary" href="/admin/resources">Back to list</a>
+  </div>
+  <form class="admin-form-grid" method="post" action="/admin/resources" enctype="multipart/form-data">
+    <div class="admin-field"><label>Title<input name="title" required placeholder="Resource title" /></label></div>
+    <div class="admin-field"><label>Description<textarea name="description" placeholder="What is this resource for?"></textarea></label></div>
+    <div class="admin-field"><label>Link<input name="link" type="url" placeholder="https://example.com" /></label></div>
+    <div class="admin-field"><label>Price (USD)<input name="price" type="number" step="0.01" min="0" placeholder="0.00" /></label></div>
+    <div class="admin-field">
+      <label>Image File<input type="file" name="image" accept="image/*" /></label>
+      <p class="admin-field-hint">Use a screenshot, cover, or thumbnail.</p>
+    </div>
+    <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
     <button type="submit">Create</button>
   </form>
 </section>

@@ -175,6 +175,24 @@ nav {
   color: var(--primary-color);
 }
 
+.buy-button {
+  padding: 0.9rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(14, 165, 233, 0.9));
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 14px 28px rgba(14, 165, 233, 0.22);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.buy-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(14, 165, 233, 0.28);
+  filter: brightness(1.03);
+}
+
 /* Hamburger */
 .hamburger {
   display: none;

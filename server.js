@@ -25,6 +25,12 @@ app.use(session({
 
 app.use((req, res, next) => {
   res.locals.user = req.session.user || null
+  res.locals.buyUrl = 'https://t.me/kabirmahmud467'
+  res.locals.formatDollar = (value) => {
+    const amount = Number.parseFloat(value)
+    if (Number.isNaN(amount) || amount <= 0) return 'Free'
+    return `$${amount.toFixed(2)}`
+  }
   next()
 })
 

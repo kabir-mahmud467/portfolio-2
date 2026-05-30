@@ -32,16 +32,25 @@
       </nav>
 
       <div class="admin-sidebar-footer">
+        <span>Signed in as</span>
+        <strong><%= (typeof user !== 'undefined' && user && user.username) ? user.username : 'Admin' %></strong>
         <a href="/auth/logout" class="admin-ghost-link">Log out</a>
       </div>
     </aside>
 
     <div class="admin-main">
       <header class="admin-topbar">
-        <div>
+        <div class="admin-topbar-copy">
           <p class="admin-kicker">Portfolio CMS</p>
-          <h1>Admin Panel</h1>
+          <h1>Content control room</h1>
+          <p class="admin-topbar-subtitle">Manage every portfolio asset from one polished workspace.</p>
         </div>
-        <div class="admin-status">Live</div>
+        <div class="admin-topbar-meta">
+          <div class="admin-status">Live</div>
+          <div class="admin-user-chip">
+            <span class="admin-user-dot"></span>
+            <span><%= (typeof user !== 'undefined' && user && user.username) ? user.username : 'Admin' %></span>
+          </div>
+        </div>
       </header>
       <main class="admin-content">

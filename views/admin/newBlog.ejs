@@ -1,12 +1,24 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>New Blog</h2>
-  <form method="post" action="/admin/blogs" enctype="multipart/form-data">
-    <div><label>Title<input name="title" required /></label></div>
-    <div><label>Content<textarea name="content"></textarea></label></div>
-    <div><label>Image File<input type="file" name="image" accept="image/*" /></label></div>
-    <div><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Blogs</p>
+      <h2>New Blog</h2>
+    </div>
+    <a class="admin-secondary" href="/admin/blogs">Back to list</a>
+  </div>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="admin-error"><%= error %></div>
+  <% } %>
+  <form class="admin-form-grid" method="post" action="/admin/blogs" enctype="multipart/form-data">
+    <div class="admin-field"><label>Title<input name="title" required placeholder="Post title" /></label></div>
+    <div class="admin-field"><label>Content<textarea name="content" placeholder="Write the post body here..."></textarea></label></div>
+    <div class="admin-field">
+      <label>Image File<input type="file" name="image" accept="image/*" /></label>
+      <p class="admin-field-hint">Use a featured image for the post.</p>
+    </div>
+    <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
     <button type="submit">Create</button>
   </form>
 </section>

@@ -10,7 +10,8 @@
         <% } %>
         <h3><%= item.title %></h3>
         <p><%= item.description %></p>
-        <p style="margin-top: 1rem; color: #cbd5e1;"><strong>$<%= item.price || 0 %></strong><% if (item.category) { %> · <%= item.category %><% } %></p>
+        <p style="margin-top: 1rem; color: #cbd5e1;"><strong><%= formatDollar(item.price) %></strong><% if (item.category) { %> · <%= item.category %><% } %></p>
+        <a href="<%= buyUrl %>" class="buy-button" style="margin-top: 1rem; display: inline-flex; align-items: center; justify-content: center;">Buy</a>
       </article>
     <% }) %>
   </div>

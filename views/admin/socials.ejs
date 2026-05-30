@@ -1,25 +1,48 @@
 <%- include('../partials/adminHeader') %>
 
 <section>
-  <h2>Social Links</h2>
-  <form method="post" action="/admin/socials">
-    <div><label>Platform<input name="platform" required /></label></div>
-    <div><label>URL<input name="url" required /></label></div>
-    <button type="submit">Add</button>
+  <div class="admin-section-head">
+    <div>
+      <p class="admin-kicker">Social Links</p>
+      <h2>Connect your audience</h2>
+    </div>
+  </div>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="admin-error"><%= error %></div>
+  <% } %>
+  <form class="admin-form-grid" method="post" action="/admin/socials" enctype="multipart/form-data">
+    <div class="admin-field"><label>Platform<input name="platform" required placeholder="GitHub, Instagram, X..." /></label></div>
+    <div class="admin-field"><label>URL<input name="url" type="url" required placeholder="https://..." /></label></div>
+    <div class="admin-field"><label>Icon<input name="icon" placeholder="fa-brands fa-github" /></label></div>
+    <div class="admin-field">
+      <label>Image File<input type="file" name="image" accept="image/*" /></label>
+      <p class="admin-field-hint">Upload a custom social badge, avatar, or logo.</p>
+    </div>
+    <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
+    <button type="submit">Add Social Link</button>
   </form>
-  <ul>
+  <div class="admin-card-grid">
     <% items.forEach(item => { %>
-      <li>
-        <a href="<%= item.url %>"><%= item.platform %></a>
-        <div>
+      <article class="admin-card">
+        <% if (item.image) { %>
+          <img class="admin-card-media" src="<%= item.image %>" alt="<%= item.platform %>">
+        <% } %>
+        <div class="admin-card-body">
+          <h3><%= item.platform %></h3>
+          <p><%= item.url %></p>
+          <% if (item.icon) { %>
+            <p class="admin-pill"><%= item.icon %></p>
+          <% } %>
+        </div>
+        <div class="admin-card-actions">
           <a href="/admin/socials/<%= item._id %>/edit">Edit</a>
           <form method="post" action="/admin/socials/<%= item._id %>/delete" style="display:inline" onsubmit="return confirm('Delete this link?')">
             <button type="submit">Delete</button>
           </form>
         </div>
-      </li>
+      </article>
     <% }) %>
-  </ul>
+  </div>
 </section>
 
 <%- include('../partials/adminFooter') %>
