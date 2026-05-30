@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <% const pageTitle = typeof title !== 'undefined' ? title : 'Home - Kabir Mahmud' %>
+  <% const pageDescription = typeof description !== 'undefined' ? description : 'Portfolio of Kabir Mahmud, Full Stack Developer.' %>
 
   <!-- Preconnect to Font Servers -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,8 +19,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Kabir Mahmud</title>
-  <meta name="description" content="Portfolio of Kabir Mahmud, Full Stack Developer.">
+  <title><%= pageTitle %></title>
+  <meta name="description" content="<%= pageDescription %>">
   <link rel="stylesheet" href="/src/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>

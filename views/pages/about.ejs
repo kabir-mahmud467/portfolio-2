@@ -1,8 +1,212 @@
-<%- include('../partials/header', { user: user }) %>
+<%- include('../partials/header', {
+  user: user,
+  title: 'About - Kabir Mahmud',
+  description: 'Learn more about Kabir Mahmud, a Full Stack Developer with experience, milestones, and certifications.',
+}) %>
+
+<%
+  const milestones = [
+    {
+      period: 'Early Years',
+      title: 'Curiosity first',
+      description:
+        'This is a good spot for your origin story. Add where you grew up, what first pulled you toward computers, and the moments that made you want to build.',
+    },
+    {
+      period: 'First Steps',
+      title: 'Learning the basics',
+      description:
+        'Replace this with the year or stage when you started experimenting with HTML, CSS, JavaScript, or any other early tools that shaped your path.',
+    },
+    {
+      period: 'Education',
+      title: 'Formal learning',
+      description:
+        'Use this space for your school, college, university, bootcamp, or self-taught journey. Mention degrees, majors, or the subjects you focused on.',
+    },
+    {
+      period: 'Career Launch',
+      title: 'First professional experience',
+      description:
+        'Summarize your first internship, freelance role, or full-time position. This is a great place to mention the kind of problems you started solving.',
+    },
+    {
+      period: 'Present',
+      title: 'Building products now',
+      description:
+        'Describe your current focus, specialties, and the kind of work you want to keep doing. You can swap this with your exact present-day goals later.',
+    },
+  ]
+
+  const experiences = [
+    {
+      role: 'Full Stack Developer',
+      company: 'Your Current Company',
+      period: '2024 - Present',
+      description:
+        'Own frontend and backend features, refine UI details, and ship maintainable web applications with a focus on performance and usability.',
+    },
+    {
+      role: 'Software Engineer / Freelancer',
+      company: 'Independent',
+      period: '2022 - 2024',
+      description:
+        'Delivered client projects, built reusable components, and handled API integrations, deployment, and the little product details that make interfaces feel polished.',
+    },
+    {
+      role: 'Intern / Junior Developer',
+      company: 'Your First Team',
+      period: '2020 - 2022',
+      description:
+        'Learned production workflows, collaborated with a team, and grew from shipping simple pages to contributing to real-world features and improvements.',
+    },
+  ]
+
+  const certifications = [
+    {
+      title: 'Full Stack Web Development',
+      issuer: 'Your Platform / Institute',
+      year: '2024',
+    },
+    {
+      title: 'JavaScript or TypeScript Professional',
+      issuer: 'Your Platform / Institute',
+      year: '2023',
+    },
+    {
+      title: 'Cloud, DevOps, or Backend Certification',
+      issuer: 'Your Platform / Institute',
+      year: '2022',
+    },
+  ]
+%>
+
+<section class="about-hero">
+  <div class="glass-card about-intro-card">
+    <div class="about-avatar" aria-hidden="true">KM</div>
+    <div class="about-intro-content">
+      <p class="eyebrow">About Kabir Mahmud</p>
+      <h2>Full Stack Developer crafting modern, interactive web experiences.</h2>
+      <p>
+        I am Kabir Mahmud, a Full Stack Developer building interactive web applications with a focus on clean architecture, thoughtful UI, and practical problem solving.
+        Replace this paragraph later with your own story, the kind of work you love, and what makes your approach different.
+      </p>
+      <div class="about-tags">
+        <span class="about-tag">Frontend UI</span>
+        <span class="about-tag">Backend APIs</span>
+        <span class="about-tag">Product Thinking</span>
+        <span class="about-tag">Performance Focused</span>
+      </div>
+    </div>
+  </div>
+
+  <aside class="glass-card about-snapshot">
+    <h3>Quick Snapshot</h3>
+    <ul class="about-facts">
+      <li>
+        <span>Name</span>
+        <strong>Kabir Mahmud</strong>
+      </li>
+      <li>
+        <span>Role</span>
+        <strong>Full Stack Developer</strong>
+      </li>
+      <li>
+        <span>Specialty</span>
+        <strong>Interactive web apps</strong>
+      </li>
+      <li>
+        <span>Status</span>
+        <strong>Open to opportunities</strong>
+      </li>
+    </ul>
+  </aside>
+</section>
 
 <section>
-  <h2>About Me</h2>
-  <p>I am Kabir Mahmud, a Full Stack Developer building interactive web applications.</p>
+  <h2 class="section-title">What I Bring</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🧩</div>
+      <h3>Product-minded engineering</h3>
+      <p>I like building with the end user in mind, balancing architecture, speed, and clarity so the result feels smooth and easy to maintain.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚙️</div>
+      <h3>End-to-end delivery</h3>
+      <p>From interface design to API integration and deployment, I can own a feature across the full stack and keep the implementation tidy.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <h3>Continuous improvement</h3>
+      <p>I enjoy refining existing systems, tightening performance, and polishing interactions until the experience feels genuinely complete.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Life Span Tree</h2>
+  <p class="about-section-note">This timeline is intentionally easy to edit later. Swap the stages, years, and descriptions with your real milestones whenever you’re ready.</p>
+  <div class="timeline about-timeline">
+    <% milestones.forEach((item, index) => { %>
+      <div class="timeline-item <%= index % 2 === 0 ? 'left' : 'right' %>">
+        <article class="glass-card timeline-card">
+          <p class="timeline-period"><%= item.period %></p>
+          <h3><%= item.title %></h3>
+          <p><%= item.description %></p>
+        </article>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Experience</h2>
+  <div class="projects-grid">
+    <% experiences.forEach((item) => { %>
+      <article class="glass-card experience-card">
+        <div class="experience-header">
+          <div>
+            <p class="experience-role"><%= item.role %></p>
+            <h3><%= item.company %></h3>
+          </div>
+          <span class="experience-period"><%= item.period %></span>
+        </div>
+        <p><%= item.description %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Certifications</h2>
+  <div class="certifications-grid">
+    <% certifications.forEach((item) => { %>
+      <article class="glass-card certification-card">
+        <p class="certification-year"><%= item.year %></p>
+        <h3><%= item.title %></h3>
+        <p><%= item.issuer %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">At a Glance</h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h2>00+</h2>
+      <p>Years of Experience</p>
+    </div>
+    <div class="stat-card">
+      <h2>00+</h2>
+      <p>Projects Delivered</p>
+    </div>
+    <div class="stat-card">
+      <h2>00+</h2>
+      <p>Certifications Earned</p>
+    </div>
+  </div>
 </section>
 
 <%- include('../partials/footer') %>
