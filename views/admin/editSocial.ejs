@@ -1,0 +1,12 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>Edit Social Link</h2>
+  <form method="post" action="/admin/socials/<%= item._id %>">
+    <div><label>Platform<input name="platform" value="<%= item.platform %>" required /></label></div>
+    <div><label>URL<input name="url" value="<%= item.url %>" required /></label></div>
+    <button type="submit">Save</button>
+  </form>
+</section>
+
+<%- include('../partials/adminFooter') %>

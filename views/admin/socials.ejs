@@ -1,0 +1,25 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>Social Links</h2>
+  <form method="post" action="/admin/socials">
+    <div><label>Platform<input name="platform" required /></label></div>
+    <div><label>URL<input name="url" required /></label></div>
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <a href="<%= item.url %>"><%= item.platform %></a>
+        <div>
+          <a href="/admin/socials/<%= item._id %>/edit">Edit</a>
+          <form method="post" action="/admin/socials/<%= item._id %>/delete" style="display:inline" onsubmit="return confirm('Delete this link?')">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/adminFooter') %>

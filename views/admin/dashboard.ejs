@@ -1,0 +1,29 @@
+<%- include('../partials/adminHeader', { user: user }) %>
+
+<section>
+  <h2>Overview</h2>
+  <div class="admin-stats">
+    <div class="admin-stat"><span>Projects</span><strong><%= counts.projects %></strong></div>
+    <div class="admin-stat"><span>Blogs</span><strong><%= counts.blogs %></strong></div>
+    <div class="admin-stat"><span>Shop Items</span><strong><%= counts.products %></strong></div>
+    <div class="admin-stat"><span>Books</span><strong><%= counts.books %></strong></div>
+    <div class="admin-stat"><span>Resources</span><strong><%= counts.resources %></strong></div>
+    <div class="admin-stat"><span>Socials</span><strong><%= counts.socials %></strong></div>
+    <div class="admin-stat"><span>Contacts</span><strong><%= counts.contacts %></strong></div>
+  </div>
+</section>
+
+<section>
+  <h2>Quick Actions</h2>
+  <nav>
+    <a href="/admin/projects">Manage Projects</a>
+    <a href="/admin/blogs">Manage Blogs</a>
+    <a href="/admin/products">Manage Shop</a>
+    <a href="/admin/books">Manage Books</a>
+    <a href="/admin/resources">Manage Resources</a>
+    <a href="/admin/socials">Social Links</a>
+    <a href="/admin/contacts">Contacts</a>
+  </nav>
+</section>
+
+<%- include('../partials/adminFooter') %>

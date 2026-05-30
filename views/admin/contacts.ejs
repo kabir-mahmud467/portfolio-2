@@ -1,0 +1,12 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>Contacts</h2>
+  <ul>
+    <% items.forEach(item => { %>
+      <li><strong><%= item.name %></strong> - <%= item.email %><p><%= item.message %></p></li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/adminFooter') %>

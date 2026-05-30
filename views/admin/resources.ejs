@@ -1,0 +1,24 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>Resources</h2>
+  <a href="/admin/resources/new">New Resource</a>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <strong><%= item.title %></strong> - <%= item.link %>
+        <div>
+          <a href="/admin/resources/<%= item._id %>/edit">Edit</a>
+          <form method="post" action="/admin/resources/<%= item._id %>/delete" style="display:inline" onsubmit="return confirm('Delete this resource?')">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+  <% if (total && limit) { %>
+    <div>Page <%= page %> of <%= Math.ceil(total/limit) %></div>
+  <% } %>
+</section>
+
+<%- include('../partials/adminFooter') %>

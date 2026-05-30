@@ -1,0 +1,13 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>New Resource</h2>
+  <form method="post" action="/admin/resources">
+    <div><label>Title<input name="title" required /></label></div>
+    <div><label>Description<textarea name="description"></textarea></label></div>
+    <div><label>Link<input name="link" /></label></div>
+    <button type="submit">Create</button>
+  </form>
+</section>
+
+<%- include('../partials/adminFooter') %>

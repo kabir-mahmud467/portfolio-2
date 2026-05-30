@@ -1,0 +1,30 @@
+<%- include('../partials/header', { user: user }) %>
+
+<section>
+  <h2>Books</h2>
+  <div class="projects-grid">
+    <% items.forEach(item => { %>
+      <article class="glass-card">
+        <% if (item.image) { %>
+          <img src="<%= item.image %>" alt="<%= item.title %>" style="max-width:100%; border-radius: 14px; margin-bottom: 1rem;">
+        <% } %>
+        <h3><%= item.title %></h3>
+        <% if (item.author) { %>
+          <p style="color: #94a3b8; margin-bottom: 0.75rem;"><%= item.author %></p>
+        <% } %>
+        <p><%= item.description %></p>
+        <p style="margin-top: 1rem; color: #cbd5e1;"><strong>$<%= item.price || 0 %></strong></p>
+      </article>
+    <% }) %>
+  </div>
+  <% if (total && limit) { %>
+    <nav>
+      <% const pages = Math.ceil(total / limit) %>
+      <% for (let i = 1; i <= pages; i++) { %>
+        <a href="/books/?page=<%= i %>&limit=<%= limit %>"><%= i %></a>
+      <% } %>
+    </nav>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>

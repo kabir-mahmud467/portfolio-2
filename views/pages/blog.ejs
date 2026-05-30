@@ -1,0 +1,23 @@
+<%- include('../partials/header', { user: user }) %>
+
+<section>
+  <h2>Blog</h2>
+  <div class="projects-grid">
+    <% items.forEach(b => { %>
+      <article class="glass-card">
+        <h3><%= b.title %></h3>
+        <p><%= b.content && b.content.substring(0,200) %><%= b.content && b.content.length > 200 ? '...' : '' %></p>
+      </article>
+    <% }) %>
+  </div>
+  <% if (total && limit) { %>
+    <nav>
+      <% const pages = Math.ceil(total / limit) %>
+      <% for (let i = 1; i <= pages; i++) { %>
+        <a href="/blog/?page=<%= i %>&limit=<%= limit %>"><%= i %></a>
+      <% } %>
+    </nav>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>

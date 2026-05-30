@@ -1,0 +1,14 @@
+<%- include('../partials/header', { user: user }) %>
+
+<section>
+  <h2>Social</h2>
+  <div class="social-grid">
+    <% items.forEach(s => { %>
+      <a href="<%= s.url %>" class="social-item" target="_blank" rel="noreferrer">
+        <h4><%= s.platform %></h4>
+      </a>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

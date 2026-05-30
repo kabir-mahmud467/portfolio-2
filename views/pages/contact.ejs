@@ -1,0 +1,13 @@
+<%- include('../partials/header', { user: user }) %>
+
+<section>
+  <h2>Contact</h2>
+  <form method="post" action="/contact">
+    <div><label>Name<input name="name" required /></label></div>
+    <div><label>Email<input name="email" type="email" required /></label></div>
+    <div><label>Message<textarea name="message" required></textarea></label></div>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,15 @@
+<%- include('../partials/header', { user: user }) %>
+
+<section>
+  <h2>Resources</h2>
+  <div class="projects-grid">
+    <% items.forEach(r => { %>
+      <article class="glass-card">
+        <a href="<%= r.link %>"><%= r.title %></a>
+        <p><%= r.description %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,24 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>Shop</h2>
+  <a href="/admin/products/new">New Shop Item</a>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <strong><%= item.title %></strong> - <%= item.category %> - $<%= item.price %>
+        <div>
+          <a href="/admin/products/<%= item._id %>/edit">Edit</a>
+          <form method="post" action="/admin/products/<%= item._id %>/delete" style="display:inline" onsubmit="return confirm('Delete this product?')">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+  <% if (total && limit) { %>
+    <div>Page <%= page %> of <%= Math.ceil(total/limit) %></div>
+  <% } %>
+</section>
+
+<%- include('../partials/adminFooter') %>

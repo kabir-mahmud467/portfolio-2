@@ -1,0 +1,21 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>Edit Project</h2>
+  <form method="post" action="/admin/projects/<%= item._id %>" enctype="multipart/form-data">
+    <div><label>Title<input name="title" value="<%= item.title %>" required /></label></div>
+    <div><label>Description<textarea name="description"><%= item.description %></textarea></label></div>
+    <div><label>Link<input name="link" value="<%= item.link %>" /></label></div>
+    <% if (item.image) { %>
+      <div>
+        <label>Current Image</label>
+        <img src="<%= item.image %>" alt="<%= item.title %>" style="max-width: 260px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12);">
+      </div>
+    <% } %>
+    <div><label>Image File<input type="file" name="image" accept="image/*" /></label></div>
+    <div><label>Image URL<input name="imageUrl" type="url" value="<%= item.image || '' %>" placeholder="https://example.com/image.jpg" /></label></div>
+    <button type="submit">Save</button>
+  </form>
+</section>
+
+<%- include('../partials/adminFooter') %>

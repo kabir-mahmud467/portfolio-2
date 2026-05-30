@@ -1,0 +1,15 @@
+<%- include('../partials/adminHeader') %>
+
+<section>
+  <h2>New Project</h2>
+  <form method="post" action="/admin/projects" enctype="multipart/form-data">
+    <div><label>Title<input name="title" required /></label></div>
+    <div><label>Description<textarea name="description"></textarea></label></div>
+    <div><label>Link<input name="link" /></label></div>
+    <div><label>Image File<input type="file" name="image" accept="image/*" /></label></div>
+    <div><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
+    <button type="submit">Create</button>
+  </form>
+</section>
+
+<%- include('../partials/adminFooter') %>

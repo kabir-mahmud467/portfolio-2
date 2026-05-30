@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/admin.css">
+</head>
+<body class="admin-body">
+  <main class="admin-login">
+    <section class="admin-login-card">
+      <p class="admin-kicker">Portfolio CMS</p>
+      <h1>Sign in</h1>
+      <p>Use your admin username and password to continue.</p>
+
+      <% if (error) { %>
+        <div class="admin-error"><%= error %></div>
+      <% } %>
+
+      <form method="post" action="/auth/login">
+        <label>
+          Username
+          <input name="username" type="text" required autocomplete="username" placeholder="Enter username" />
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" required autocomplete="current-password" placeholder="Enter password" />
+        </label>
+        <button type="submit">Log in</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

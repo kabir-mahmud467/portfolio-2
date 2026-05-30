@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "seed": "node seedAdmin.js",
+    "vite:dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -12,10 +15,19 @@
     "@vitejs/plugin-legacy": "^8.0.1",
     "sharp": "^0.34.5",
     "terser": "^5.46.2",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "gsap": "^3.15.0",
-    "three": "^0.184.0"
+    "three": "^0.184.0",
+    "express": "^4.18.2",
+    "ejs": "^3.1.9",
+    "mongoose": "^7.0.5",
+    "dotenv": "^16.0.3",
+    "multer": "^1.4.5-lts.1",
+    "cloudinary": "^1.34.0",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.3"
   }
 }
