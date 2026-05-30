@@ -1,5 +1,4 @@
 import express from 'express'
-import session from 'express-session'
 import path from 'path'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
@@ -8,6 +7,7 @@ import adminRoutes from './routes/admin.js'
 import publicRoutes from './routes/public.js'
 import apiRoutes from './routes/api.js'
 import { getMongoUri } from './config/db.js'
+import { getAuthUser } from './utils/adminAuth.js'
 
 dotenv.config()
 const __dirname = path.resolve()
@@ -16,15 +16,9 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-// sessions (development; for production use a persistent store)
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'secret',
-  resave: false,
-  saveUninitialized: false,
-}))
-
 app.use((req, res, next) => {
-  res.locals.user = req.session.user || null
+  req.currentUser = getAuthUser(req)
+  res.locals.user = req.currentUser || null
   res.locals.buyUrl = 'https://t.me/kabirmahmud467'
   res.locals.formatDollar = (value) => {
     const amount = Number.parseFloat(value)

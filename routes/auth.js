@@ -1,6 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcryptjs'
 import User from '../models/User.js'
+import { clearAuthCookie, setAuthCookie } from '../utils/adminAuth.js'
 
 const router = express.Router()
 
@@ -27,12 +28,13 @@ router.post('/login', async (req, res) => {
     await user.save()
   }
 
-  req.session.user = { id: user._id, isAdmin: user.isAdmin, username: user.username }
+  setAuthCookie(res, { id: user._id, isAdmin: user.isAdmin, username: user.username })
   res.redirect('/admin')
 })
 
 router.get('/logout', (req, res) => {
-  req.session.destroy(() => res.redirect('/'))
+  clearAuthCookie(res)
+  res.redirect('/')
 })
 
 export default router

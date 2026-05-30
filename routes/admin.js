@@ -31,7 +31,7 @@ router.get('/', ensureAdmin, async (req, res) => {
     socials: await SocialLink.countDocuments(),
     contacts: await Contact.countDocuments(),
   }
-  res.render('admin/dashboard', { user: req.session.user, counts })
+  res.render('admin/dashboard', { user: req.currentUser, counts })
 })
 
 // Projects

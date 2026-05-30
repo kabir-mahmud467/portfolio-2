@@ -10,15 +10,15 @@ import Contact from '../models/Contact.js'
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.render('index', { user: req.session.user || null })
+  res.render('index', { user: req.currentUser || null })
 })
 
 router.get('/home/', (req, res) => {
-  res.render('index', { user: req.session.user || null })
+  res.render('index', { user: req.currentUser || null })
 })
 
 router.get('/about/', (req, res) => {
-  res.render('pages/about', { user: req.session.user || null })
+  res.render('pages/about', { user: req.currentUser || null })
 })
 
 router.get('/projects/', async (req, res) => {
@@ -29,7 +29,7 @@ router.get('/projects/', async (req, res) => {
     Project.find().sort('-createdAt').skip(skip).limit(limit),
     Project.countDocuments(),
   ])
-  res.render('pages/projects', { user: req.session.user || null, items, page, total, limit })
+  res.render('pages/projects', { user: req.currentUser || null, items, page, total, limit })
 })
 
 router.get('/shop/', async (req, res) => {
@@ -40,7 +40,7 @@ router.get('/shop/', async (req, res) => {
     Product.find().sort('-createdAt').skip(skip).limit(limit),
     Product.countDocuments(),
   ])
-  res.render('pages/shop', { user: req.session.user || null, items, page, total, limit })
+  res.render('pages/shop', { user: req.currentUser || null, items, page, total, limit })
 })
 
 router.get('/books/', async (req, res) => {
@@ -51,7 +51,7 @@ router.get('/books/', async (req, res) => {
     Book.find().sort('-createdAt').skip(skip).limit(limit),
     Book.countDocuments(),
   ])
-  res.render('pages/books', { user: req.session.user || null, items, page, total, limit })
+  res.render('pages/books', { user: req.currentUser || null, items, page, total, limit })
 })
 
 router.get('/blog/', async (req, res) => {
@@ -62,21 +62,21 @@ router.get('/blog/', async (req, res) => {
     Blog.find().sort('-createdAt').skip(skip).limit(limit),
     Blog.countDocuments(),
   ])
-  res.render('pages/blog', { user: req.session.user || null, items, page, total, limit })
+  res.render('pages/blog', { user: req.currentUser || null, items, page, total, limit })
 })
 
 router.get('/resources/', async (req, res) => {
   const items = await Resource.find().sort('-createdAt')
-  res.render('pages/resources', { user: req.session.user || null, items })
+  res.render('pages/resources', { user: req.currentUser || null, items })
 })
 
 router.get('/social/', async (req, res) => {
   const items = await SocialLink.find().sort('-createdAt')
-  res.render('pages/social', { user: req.session.user || null, items })
+  res.render('pages/social', { user: req.currentUser || null, items })
 })
 
 router.get('/contact/', (req, res) => {
-  res.render('pages/contact', { user: req.session.user || null })
+  res.render('pages/contact', { user: req.currentUser || null })
 })
 
 router.post('/contact', async (req, res) => {
