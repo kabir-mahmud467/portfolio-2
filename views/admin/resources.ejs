@@ -21,6 +21,9 @@
           <% if (item.link) { %>
             <a class="admin-link" href="<%= item.link %>" target="_blank" rel="noreferrer">Open link</a>
           <% } %>
+          <% if (item.pdf) { %>
+            <a class="admin-link" href="<%= item.pdf %>" target="_blank" rel="noreferrer">Open PDF</a>
+          <% } %>
         </div>
         <div class="admin-card-actions">
           <a href="/admin/resources/<%= item._id %>/edit">Edit</a>

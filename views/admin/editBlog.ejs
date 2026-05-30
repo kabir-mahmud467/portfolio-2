@@ -10,6 +10,7 @@
   </div>
   <form class="admin-form-grid" method="post" action="/admin/blogs/<%= item._id %>" enctype="multipart/form-data">
     <div class="admin-field"><label>Title<input name="title" value="<%= item.title %>" required /></label></div>
+    <div class="admin-field"><label>Author<input name="author" value="<%= item.author || '' %>" /></label></div>
     <div class="admin-field"><label>Content<textarea name="content"><%= item.content %></textarea></label></div>
     <% if (item.image) { %>
       <div class="admin-upload-preview">
@@ -19,6 +20,14 @@
     <% } %>
     <div class="admin-field"><label>Image File<input type="file" name="image" accept="image/*" /></label></div>
     <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" value="<%= item.image || '' %>" placeholder="https://example.com/image.jpg" /></label></div>
+    <div class="admin-field"><label>Meta Title<input name="metaTitle" value="<%= item.metaTitle || '' %>" placeholder="SEO title for search results" /></label></div>
+    <div class="admin-field"><label>Meta Description<textarea name="metaDescription" placeholder="Short SEO description"><%= item.metaDescription || '' %></textarea></label></div>
+    <div class="admin-field"><label>Meta Keywords<input name="metaKeywords" value="<%= item.metaKeywords || '' %>" placeholder="keyword one, keyword two" /></label></div>
+    <div class="admin-field"><label>Accent Color<input name="accentColor" type="color" value="<%= item.accentColor || '#3b82f6' %>" /></label></div>
+    <div class="admin-field"><label>Text Color<input name="textColor" type="color" value="<%= item.textColor || '#e2e8f0' %>" /></label></div>
+    <div class="admin-field"><label>Background Color<input name="backgroundColor" type="color" value="<%= item.backgroundColor || '#0f172a' %>" /></label></div>
+    <div class="admin-field"><label>Title Size (px)<input name="titleSize" type="number" min="24" max="120" step="1" value="<%= item.titleSize || '' %>" placeholder="48" /></label></div>
+    <div class="admin-field"><label>Content Size (px)<input name="contentSize" type="number" min="14" max="32" step="1" value="<%= item.contentSize || '' %>" placeholder="18" /></label></div>
     <button type="submit">Save</button>
   </form>
 </section>

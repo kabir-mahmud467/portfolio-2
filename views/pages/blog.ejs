@@ -4,9 +4,13 @@
   <h2>Blog</h2>
   <div class="projects-grid">
     <% items.forEach(b => { %>
-      <article class="glass-card">
-        <h3><%= b.title %></h3>
+      <article class="glass-card blog-card">
+        <% if (b.image) { %>
+          <img src="<%= b.image %>" alt="<%= b.title %>" class="blog-card-image">
+        <% } %>
+        <h3><a href="/blog/<%= b.slug %>/"><%= b.title %></a></h3>
         <p><%= b.content && b.content.substring(0,200) %><%= b.content && b.content.length > 200 ? '...' : '' %></p>
+        <a class="secondary-button" href="/blog/<%= b.slug %>/">Read post</a>
       </article>
     <% }) %>
   </div>

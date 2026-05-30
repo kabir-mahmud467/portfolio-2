@@ -11,7 +11,12 @@
         <a href="<%= r.link %>"><%= r.title %></a>
         <p><%= r.description %></p>
         <p style="margin-top: 1rem; color: #cbd5e1;"><strong><%= formatDollar(r.price) %></strong></p>
-        <a href="<%= buyUrl %>" class="buy-button" style="margin-top: 1rem; display: inline-flex; align-items: center; justify-content: center;">Buy</a>
+        <div class="content-actions">
+          <a href="<%= buyUrl %>" class="buy-button">Buy</a>
+          <% if (r.pdf) { %>
+            <a href="<%= r.pdf %>" class="secondary-button" target="_blank" rel="noreferrer">Open PDF</a>
+          <% } %>
+        </div>
       </article>
     <% }) %>
   </div>

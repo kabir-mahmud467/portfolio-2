@@ -6,6 +6,7 @@ const BookSchema = new mongoose.Schema({
   author: String,
   price: Number,
   image: String,
+  pdf: String,
   description: String,
 }, { timestamps: true })
 

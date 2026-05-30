@@ -3,6 +3,12 @@
 <head>
   <% const pageTitle = typeof title !== 'undefined' ? title : 'Home - Kabir Mahmud' %>
   <% const pageDescription = typeof description !== 'undefined' ? description : 'Portfolio of Kabir Mahmud, Full Stack Developer.' %>
+  <% const pageKeywords = typeof keywords !== 'undefined' ? keywords : '' %>
+  <% const openGraphTitle = typeof ogTitle !== 'undefined' ? ogTitle : pageTitle %>
+  <% const openGraphDescription = typeof ogDescription !== 'undefined' ? ogDescription : pageDescription %>
+  <% const openGraphImage = typeof ogImage !== 'undefined' ? ogImage : '' %>
+  <% const openGraphType = typeof ogType !== 'undefined' ? ogType : 'website' %>
+  <% const pageThemeColor = typeof themeColor !== 'undefined' ? themeColor : '' %>
 
   <!-- Preconnect to Font Servers -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +27,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= pageTitle %></title>
   <meta name="description" content="<%= pageDescription %>">
+  <% if (pageKeywords) { %><meta name="keywords" content="<%= pageKeywords %>"><% } %>
+  <meta property="og:type" content="<%= openGraphType %>">
+  <meta property="og:title" content="<%= openGraphTitle %>">
+  <meta property="og:description" content="<%= openGraphDescription %>">
+  <% if (openGraphImage) { %><meta property="og:image" content="<%= openGraphImage %>"><% } %>
+  <meta name="twitter:card" content="<%= openGraphImage ? 'summary_large_image' : 'summary' %>">
+  <meta name="twitter:title" content="<%= openGraphTitle %>">
+  <meta name="twitter:description" content="<%= openGraphDescription %>">
+  <% if (openGraphImage) { %><meta name="twitter:image" content="<%= openGraphImage %>"><% } %>
+  <% if (pageThemeColor) { %><meta name="theme-color" content="<%= pageThemeColor %>"><% } %>
   <link rel="stylesheet" href="/src/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>
@@ -35,11 +51,11 @@
         <img src="/favicon-circle-sm.webp" alt="Kabir Mahmud Logo" class="logo-img" width="36" height="36" fetchpriority="high" decoding="async">
         <span>Kabir Mahmud</span>
       </a>
-      <div class="hamburger">
+      <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
       <ul class="nav-links">
         <li><a href="/home/">Home</a></li>
         <li><a href="/about/">About</a></li>

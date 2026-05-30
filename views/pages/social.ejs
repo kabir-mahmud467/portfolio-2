@@ -4,9 +4,15 @@
   <h2>Social</h2>
   <div class="social-grid">
     <% items.forEach(s => { %>
-      <a href="<%= s.url %>" class="social-item" target="_blank" rel="noreferrer">
-        <h4><%= s.platform %></h4>
-      </a>
+      <div class="social-stack">
+        <article class="social-item">
+          <% if (s.image) { %>
+            <img src="<%= s.image %>" alt="<%= s.platform %>">
+          <% } %>
+          <h4><%= s.platform %></h4>
+        </article>
+        <a class="social-profile-link" href="<%= s.url %>" target="_blank" rel="noreferrer">View profile</a>
+      </div>
     <% }) %>
   </div>
 </section>

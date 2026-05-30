@@ -13,12 +13,21 @@
   <% } %>
   <form class="admin-form-grid" method="post" action="/admin/blogs" enctype="multipart/form-data">
     <div class="admin-field"><label>Title<input name="title" required placeholder="Post title" /></label></div>
+    <div class="admin-field"><label>Author<input name="author" placeholder="Author name" /></label></div>
     <div class="admin-field"><label>Content<textarea name="content" placeholder="Write the post body here..."></textarea></label></div>
     <div class="admin-field">
       <label>Image File<input type="file" name="image" accept="image/*" /></label>
       <p class="admin-field-hint">Use a featured image for the post.</p>
     </div>
     <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg" /></label></div>
+    <div class="admin-field"><label>Meta Title<input name="metaTitle" placeholder="SEO title for search results" /></label></div>
+    <div class="admin-field"><label>Meta Description<textarea name="metaDescription" placeholder="Short SEO description"></textarea></label></div>
+    <div class="admin-field"><label>Meta Keywords<input name="metaKeywords" placeholder="keyword one, keyword two" /></label></div>
+    <div class="admin-field"><label>Accent Color<input name="accentColor" type="color" value="#3b82f6" /></label></div>
+    <div class="admin-field"><label>Text Color<input name="textColor" type="color" value="#e2e8f0" /></label></div>
+    <div class="admin-field"><label>Background Color<input name="backgroundColor" type="color" value="#0f172a" /></label></div>
+    <div class="admin-field"><label>Title Size (px)<input name="titleSize" type="number" min="24" max="120" step="1" placeholder="48" /></label></div>
+    <div class="admin-field"><label>Content Size (px)<input name="contentSize" type="number" min="14" max="32" step="1" placeholder="18" /></label></div>
     <button type="submit">Create</button>
   </form>
 </section>

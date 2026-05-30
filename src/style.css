@@ -193,6 +193,35 @@ nav {
   filter: brightness(1.03);
 }
 
+.content-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.secondary-button:hover,
+.secondary-button:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(148, 163, 184, 0.34);
+  outline: none;
+}
+
 /* Hamburger */
 .hamburger {
   display: none;
@@ -200,6 +229,12 @@ nav {
   flex-direction: column;
   gap: 5px;
   z-index: 101;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  appearance: none;
 }
 
 .hamburger span {
@@ -490,7 +525,16 @@ footer {
   margin-top: 2rem;
 }
 
+.social-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
 .social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   text-align: center;
   text-decoration: none;
   color: var(--text-color);
@@ -516,6 +560,95 @@ footer {
 
 .social-item:hover img {
   transform: scale(1.1);
+}
+
+.social-profile-link {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  background: rgba(59, 130, 246, 0.12);
+  color: #dbeafe;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.social-profile-link:hover,
+.social-profile-link:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(59, 130, 246, 0.42);
+  outline: none;
+}
+
+.blog-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.blog-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.blog-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-post {
+  display: grid;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.blog-post-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.blog-post-title {
+  margin: 0;
+  line-height: 1.05;
+}
+
+.blog-post-meta {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.blog-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blog-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.88rem;
+}
+
+.blog-post-content {
+  white-space: pre-wrap;
+  line-height: 1.75;
+  font-size: var(--post-content-size, 18px);
 }
 
 /* Marquee / Tech Stack */

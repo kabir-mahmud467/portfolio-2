@@ -13,9 +13,9 @@
     <div class="admin-field"><label>URL<input name="url" type="url" value="<%= item.url %>" required /></label></div>
     <div class="admin-field"><label>Icon<input name="icon" value="<%= item.icon || '' %>" placeholder="fa-brands fa-github" /></label></div>
     <% if (item.image) { %>
-      <div class="admin-upload-preview">
+      <div class="admin-upload-preview admin-social-preview">
         <p class="admin-field-hint">Current image</p>
-        <img src="<%= item.image %>" alt="<%= item.platform %>" style="max-width: 260px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12);">
+        <img src="<%= item.image %>" alt="<%= item.platform %>">
       </div>
     <% } %>
     <div class="admin-field"><label>Image File<input type="file" name="image" accept="image/*" /></label></div>

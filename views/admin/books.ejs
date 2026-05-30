@@ -18,6 +18,9 @@
           <h3><%= item.title %></h3>
           <p><%= item.author || 'Unknown author' %></p>
           <p class="admin-price"><%= formatDollar(item.price) %></p>
+          <% if (item.pdf) { %>
+            <a class="admin-link" href="<%= item.pdf %>" target="_blank" rel="noreferrer">Open PDF</a>
+          <% } %>
         </div>
         <div class="admin-card-actions">
           <a href="/admin/books/<%= item._id %>/edit">Edit</a>

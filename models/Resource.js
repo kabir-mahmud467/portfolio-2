@@ -6,6 +6,7 @@ const ResourceSchema = new mongoose.Schema({
   description: String,
   link: String,
   image: String,
+  pdf: String,
   price: { type: Number, default: 0 },
   tags: [String],
 }, { timestamps: true })

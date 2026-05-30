@@ -65,6 +65,24 @@ router.get('/blog/', async (req, res) => {
   res.render('pages/blog', { user: req.currentUser || null, items, page, total, limit })
 })
 
+router.get('/blog/:slug/', async (req, res) => {
+  const item = await Blog.findOne({ slug: req.params.slug })
+  if (!item) return res.status(404).send('Blog post not found')
+
+  res.render('pages/blogPost', {
+    user: req.currentUser || null,
+    item,
+    title: item.metaTitle || item.title,
+    description: item.metaDescription || (item.content ? String(item.content).slice(0, 160) : ''),
+    keywords: item.metaKeywords || '',
+    ogType: 'article',
+    ogTitle: item.metaTitle || item.title,
+    ogDescription: item.metaDescription || (item.content ? String(item.content).slice(0, 160) : ''),
+    ogImage: item.image || '',
+    themeColor: item.backgroundColor || '',
+  })
+})
+
 router.get('/resources/', async (req, res) => {
   const items = await Resource.find().sort('-createdAt')
   res.render('pages/resources', { user: req.currentUser || null, items })

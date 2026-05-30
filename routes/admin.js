@@ -12,13 +12,22 @@ import { makeUniqueSlug } from '../utils/slug.js'
 
 const router = express.Router()
 
-async function resolveImage(req, folder, fallback = '') {
-  const uploadedImage = req.file
-    ? (await uploadToCloudinary(req.file.buffer, folder)).secure_url
+async function resolveAsset(req, folder, bodyField, fallback = '', uploadOptions = {}, fileField = 'image') {
+  const file = req.files?.[fileField]?.[0] || req.file
+  const uploadedAsset = file
+    ? (await uploadToCloudinary(file.buffer, folder, uploadOptions)).secure_url
     : ''
-  const imageUrl = typeof req.body.imageUrl === 'string' ? req.body.imageUrl.trim() : ''
+  const assetUrl = typeof req.body[bodyField] === 'string' ? req.body[bodyField].trim() : ''
 
-  return uploadedImage || imageUrl || fallback
+  return uploadedAsset || assetUrl || fallback
+}
+
+async function resolveImage(req, folder, fallback = '') {
+  return resolveAsset(req, folder, 'imageUrl', fallback, {}, 'image')
+}
+
+async function resolvePdf(req, folder, fallback = '') {
+  return resolveAsset(req, folder, 'pdfUrl', fallback, { resource_type: 'raw' }, 'pdf')
 }
 
 router.get('/', ensureAdmin, async (req, res) => {
@@ -86,7 +95,13 @@ router.post('/blogs', ensureAdmin, upload.single('image'), async (req, res) => {
   const imageUrl = await resolveImage(req, 'blogs')
   if (!req.body.title) return res.render('admin/newBlog', { error: 'Title required' })
   const slug = await makeUniqueSlug(Blog, req.body.title, null, 'blog')
-  await Blog.create({ ...req.body, slug, image: imageUrl })
+  await Blog.create({
+    ...req.body,
+    slug,
+    image: imageUrl,
+    metaTitle: req.body.metaTitle || req.body.title,
+    metaDescription: req.body.metaDescription || req.body.content?.slice(0, 160) || '',
+  })
   res.redirect('/admin/blogs')
 })
 
@@ -95,7 +110,20 @@ router.get('/blogs/:id/edit', ensureAdmin, async (req, res) => {
   res.render('admin/editBlog', { item })
 })
 router.post('/blogs/:id', ensureAdmin, upload.single('image'), async (req, res) => {
-  const updates = { title: req.body.title, content: req.body.content, tags: req.body.tags }
+  const updates = {
+    title: req.body.title,
+    content: req.body.content,
+    tags: req.body.tags,
+    author: req.body.author,
+    metaTitle: req.body.metaTitle,
+    metaDescription: req.body.metaDescription,
+    metaKeywords: req.body.metaKeywords,
+    accentColor: req.body.accentColor,
+    textColor: req.body.textColor,
+    backgroundColor: req.body.backgroundColor,
+    titleSize: req.body.titleSize,
+    contentSize: req.body.contentSize,
+  }
   updates.slug = await makeUniqueSlug(Blog, req.body.title, req.params.id, 'blog')
   updates.image = await resolveImage(req, 'blogs', (await Blog.findById(req.params.id))?.image || '')
   await Blog.findByIdAndUpdate(req.params.id, updates)
@@ -186,21 +214,23 @@ router.get('/books', ensureAdmin, async (req, res) => {
   res.render('admin/books', { items, page, total, limit })
 })
 router.get('/books/new', ensureAdmin, (req, res) => res.render('admin/newBook'))
-router.post('/books', ensureAdmin, upload.single('image'), async (req, res) => {
+router.post('/books', ensureAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 }]), async (req, res) => {
   const imageUrl = await resolveImage(req, 'books')
+  const pdfUrl = await resolvePdf(req, 'books')
   const price = parseFloat(req.body.price || 0)
   const slug = await makeUniqueSlug(Book, req.body.title, null, 'book')
-  await Book.create({ ...req.body, slug, price, image: imageUrl })
+  await Book.create({ ...req.body, slug, price, image: imageUrl, pdf: pdfUrl })
   res.redirect('/admin/books')
 })
 router.get('/books/:id/edit', ensureAdmin, async (req, res) => {
   const item = await Book.findById(req.params.id)
   res.render('admin/editBook', { item })
 })
-router.post('/books/:id', ensureAdmin, upload.single('image'), async (req, res) => {
+router.post('/books/:id', ensureAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 }]), async (req, res) => {
   const updates = { title: req.body.title, author: req.body.author, description: req.body.description, price: parseFloat(req.body.price || 0) }
   updates.slug = await makeUniqueSlug(Book, req.body.title, req.params.id, 'book')
   updates.image = await resolveImage(req, 'books', (await Book.findById(req.params.id))?.image || '')
+  updates.pdf = await resolvePdf(req, 'books', (await Book.findById(req.params.id))?.pdf || '')
   await Book.findByIdAndUpdate(req.params.id, updates)
   res.redirect('/admin/books')
 })
@@ -221,18 +251,19 @@ router.get('/resources', ensureAdmin, async (req, res) => {
   res.render('admin/resources', { items, page, total, limit })
 })
 router.get('/resources/new', ensureAdmin, (req, res) => res.render('admin/newResource'))
-router.post('/resources', ensureAdmin, upload.single('image'), async (req, res) => {
+router.post('/resources', ensureAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 }]), async (req, res) => {
   const image = await resolveImage(req, 'resources')
+  const pdf = await resolvePdf(req, 'resources')
   const price = parseFloat(req.body.price || 0)
   const slug = await makeUniqueSlug(Resource, req.body.title, null, 'resource')
-  await Resource.create({ ...req.body, slug, price, image })
+  await Resource.create({ ...req.body, slug, price, image, pdf })
   res.redirect('/admin/resources')
 })
 router.get('/resources/:id/edit', ensureAdmin, async (req, res) => {
   const item = await Resource.findById(req.params.id)
   res.render('admin/editResource', { item })
 })
-router.post('/resources/:id', ensureAdmin, upload.single('image'), async (req, res) => {
+router.post('/resources/:id', ensureAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 }]), async (req, res) => {
   const existing = await Resource.findById(req.params.id)
   const updates = {
     title: req.body.title,
@@ -241,6 +272,7 @@ router.post('/resources/:id', ensureAdmin, upload.single('image'), async (req, r
     slug: await makeUniqueSlug(Resource, req.body.title, req.params.id, 'resource'),
     price: parseFloat(req.body.price || 0),
     image: await resolveImage(req, 'resources', existing?.image || ''),
+    pdf: await resolvePdf(req, 'resources', existing?.pdf || ''),
   }
   await Resource.findByIdAndUpdate(req.params.id, updates)
   res.redirect('/admin/resources')

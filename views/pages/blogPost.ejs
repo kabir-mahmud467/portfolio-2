@@ -1,0 +1,42 @@
+<%- include('../partials/header', {
+  user: user,
+  title: title,
+  description: description,
+  keywords: keywords,
+  ogType: ogType,
+  ogTitle: ogTitle,
+  ogDescription: ogDescription,
+  ogImage: ogImage,
+  themeColor: item.backgroundColor || '',
+}) %>
+
+<%
+  const titleSize = Number.parseInt(item.titleSize || '', 10) || 56
+  const contentSize = Number.parseInt(item.contentSize || '', 10) || 18
+  const accent = item.accentColor || '#3b82f6'
+  const text = item.textColor || '#e2e8f0'
+  const background = item.backgroundColor || 'rgba(15, 23, 42, 0.9)'
+%>
+
+<article class="glass-card blog-post" style="background: <%= background %>; color: <%= text %>; --post-accent: <%= accent %>; --post-content-size: <%= contentSize %>px;">
+  <% if (item.image) { %>
+    <img class="blog-post-image" src="<%= item.image %>" alt="<%= item.title %>">
+  <% } %>
+  <p class="blog-post-meta" style="color: <%= accent %>;">
+    <%= item.author ? item.author : 'Blog post' %>
+  </p>
+  <h1 class="blog-post-title" style="font-size: <%= titleSize %>px;"><%= item.title %></h1>
+  <% if (item.tags && item.tags.length) { %>
+    <div class="blog-tag-row">
+      <% item.tags.forEach(tag => { %>
+        <span class="blog-tag" style="border-color: <%= accent %>33; color: <%= text %>;"><%= tag %></span>
+      <% }) %>
+    </div>
+  <% } %>
+  <div class="blog-post-content"><%= item.content %></div>
+  <div class="content-actions">
+    <a class="secondary-button" href="/blog/">Back to blog</a>
+  </div>
+</article>
+
+<%- include('../partials/footer') %>

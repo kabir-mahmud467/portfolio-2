@@ -23,9 +23,9 @@
   </form>
   <div class="admin-card-grid">
     <% items.forEach(item => { %>
-      <article class="admin-card">
+      <article class="admin-card admin-social-card">
         <% if (item.image) { %>
-          <img class="admin-card-media" src="<%= item.image %>" alt="<%= item.platform %>">
+          <img class="admin-social-card-media" src="<%= item.image %>" alt="<%= item.platform %>">
         <% } %>
         <div class="admin-card-body">
           <h3><%= item.platform %></h3>

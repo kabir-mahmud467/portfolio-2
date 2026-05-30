@@ -1,7 +1,6 @@
 // ── Critical path JS (tiny, ~0.8KB) ────────────────────────────────────────
 // GSAP and Three.js are both lazy-loaded so they NEVER block initial paint.
 // Hero animations are handled by CSS @keyframes in style.css.
-import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   // ── Hamburger Menu ──────────────────────────────────────────────────────
@@ -11,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       navLinks.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
     });
   }
 
@@ -31,13 +31,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Active Nav Link ─────────────────────────────────────────────────────
   const path = window.location.pathname;
-  document.querySelectorAll('.nav-links > li > a').forEach(link => {
+  document.querySelectorAll('.nav-links a').forEach(link => {
     const href = link.getAttribute('href');
     if (path === href || (path === '/' && href === '/')) {
       link.classList.add('active');
     } else if (href !== '/' && path.startsWith(href)) {
       link.classList.add('active');
     }
+
+    link.addEventListener('click', () => {
+      if (link === dropdownToggle) return;
+
+      if (hamburger && navLinks && navLinks.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 });
 

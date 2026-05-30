@@ -20,6 +20,14 @@
     <% } %>
     <div class="admin-field"><label>Image File<input type="file" name="image" accept="image/*" /></label></div>
     <div class="admin-field"><label>Image URL<input name="imageUrl" type="url" value="<%= item.image || '' %>" placeholder="https://example.com/image.jpg" /></label></div>
+    <% if (item.pdf) { %>
+      <div class="admin-upload-preview admin-social-preview">
+        <p class="admin-field-hint">Current PDF</p>
+        <a class="admin-link" href="<%= item.pdf %>" target="_blank" rel="noreferrer">Open PDF</a>
+      </div>
+    <% } %>
+    <div class="admin-field"><label>PDF File<input type="file" name="pdf" accept="application/pdf" /></label></div>
+    <div class="admin-field"><label>PDF URL<input name="pdfUrl" type="url" value="<%= item.pdf || '' %>" placeholder="https://example.com/book.pdf" /></label></div>
     <button type="submit">Save</button>
   </form>
 </section>
