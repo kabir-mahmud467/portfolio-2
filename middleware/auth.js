@@ -3,3 +3,4 @@ export function ensureAdmin(req, res, next) {
   if (user && user.isAdmin) return next()
   return res.redirect('/auth/login')
 }
+
