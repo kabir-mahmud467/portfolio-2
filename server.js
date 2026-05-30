@@ -7,7 +7,7 @@ import authRoutes from './routes/auth.js'
 import adminRoutes from './routes/admin.js'
 import publicRoutes from './routes/public.js'
 import apiRoutes from './routes/api.js'
-import { ensureAdminUser } from './seedAdmin.js'
+import { getMongoUri } from './config/db.js'
 
 dotenv.config()
 const __dirname = path.resolve()
@@ -31,6 +31,30 @@ app.use((req, res, next) => {
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+let dbConnectionPromise = null
+
+function ensureDbConnection() {
+  if (dbConnectionPromise) return dbConnectionPromise
+
+  const mongoUri = getMongoUri()
+  if (!mongoUri) {
+    return Promise.reject(new Error('Missing MONGO_URI or MONGODB_URI in environment variables'))
+  }
+
+  dbConnectionPromise = connectDB()
+  return dbConnectionPromise
+}
+
+app.use(async (req, res, next) => {
+  try {
+    await ensureDbConnection()
+    next()
+  } catch (err) {
+    console.error('Failed to connect to DB', err)
+    res.status(500).send('Database connection failed')
+  }
+})
+
 // routes FIRST (before static serving) to ensure they take priority
 app.use('/auth', authRoutes)
 app.use('/admin', adminRoutes)
@@ -44,10 +68,14 @@ app.use('/src', express.static(path.join(__dirname, 'src')))
 
 const PORT = process.env.PORT || 3000
 
-connectDB().then(() => {
-  return ensureAdminUser()
-}).then(() => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
-}).catch(err => {
-  console.error('Failed to connect to DB', err)
-})
+export default app
+
+if (!process.env.VERCEL) {
+  ensureDbConnection()
+    .then(() => {
+      app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+    })
+    .catch(err => {
+      console.error('Failed to connect to DB', err)
+    })
+}

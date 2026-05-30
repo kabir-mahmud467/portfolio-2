@@ -2,14 +2,18 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URI
-
-if (!MONGO_URI) {
-  throw new Error('Missing MONGO_URI or MONGODB_URI in environment variables')
+export function getMongoUri() {
+  return process.env.MONGO_URI || process.env.MONGODB_URI || ''
 }
 
 async function connectDB() {
-  await mongoose.connect(MONGO_URI, {
+  const mongoUri = getMongoUri()
+
+  if (!mongoUri) {
+    throw new Error('Missing MONGO_URI or MONGODB_URI in environment variables')
+  }
+
+  await mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
