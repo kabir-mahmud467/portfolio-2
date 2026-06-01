@@ -24,4 +24,8 @@
     <loc>https://kabirmahmud.xyz/blog/</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://kabirmahmud.xyz/shop/</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
